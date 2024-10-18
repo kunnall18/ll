@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stylish Flip Card Gallery</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #212121;
+            font-family: 'Arial', sans-serif;
+            /* Adjust to ensure the last card is visible */
+        }
+
+        header {
+            width: 100%;
+            background: linear-gradient(135deg, #444, #222);
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            animation: fadeIn 2s ease-in-out;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .box {
+            width: 100%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+        }
+
+        .card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-front {
+            background: #7a7676;
+            /* Light gray background */
+        }
+
+        .card-back {
+            background: #000;
+            transform: rotateY(180deg);
+        }
+
+        .card-back img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .details {
+            color: #2c3e50;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .details h2 {
+            margin: 0;
+            padding: 0;
+            font-weight: 700;
+            font-size: 18px;
+            color: #ffffff;
+            /* Darker blue-gray */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            /* Light shadow for contrast */
+        }
+
+        .details h2 span {
+            font-weight: 400;
+            font-size: 14px;
+            color: #ffffff;
+            /* Slightly darker shade for subtitle */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            /* Light shadow for contrast */
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* Card Font Styles */
+        .card:nth-child(1) .details h2 {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .card:nth-child(2) .details h2 {
+            font-family: 'Pacifico', cursive;
+        }
+
+        .card:nth-child(3) .details h2 {
+            font-family: 'Amatic SC', cursive;
+        }
+
+        .card:nth-child(4) .details h2 {
+            font-family: 'Lobster', cursive;
+        }
+
+        .card:nth-child(5) .details h2 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .card:nth-child(6) .details h2 {
+            font-family: 'Sacramento', cursive;
+        }
+
+        .card:nth-child(7) .details h2 {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .card:nth-child(8) .details h2 {
+            font-family: 'Pinyon Script', cursive;
+        }
+
+        .card:nth-child(9) .details h2 {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        .card:nth-child(10) .details h2 {
+            font-family: 'Parisienne', cursive;
+        }
+
+        .card:nth-child(11) .details h2 {
+            font-family: 'Alex Brush', cursive;
+        }
+
+        .card:nth-child(12) .details h2 {
+            font-family: 'Allura', cursive;
+        }
+
+        .card:nth-child(13) .details h2 {
+            font-family: 'Satisfy', cursive;
+        }
+
+        .card:nth-child(14) .details h2 {
+            font-family: 'Sofia', cursive;
+        }
+
+        .card:nth-child(15) .details h2 {
+            font-family: 'Zeyada', cursive;
+        }
+
+        .card:nth-child(16) .details h2 {
+            font-family: 'Kristi', cursive;
+        }
+
+        .card:nth-child(17) .details h2 {
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .card:nth-child(18) .details h2 {
+            font-family: 'Tangerine', cursive;
+        }
+
+        .card:nth-child(19) .details h2 {
+            font-family: 'Courgette', cursive;
+        }
+
+        .card:nth-child(20) .details h2 {
+            font-family: 'Cedarville Cursive', cursive;
+        }
+
+        .card:nth-child(21) .details h2 {
+            font-family: 'Rochester', cursive;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border: 5px solid white;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        /* Footer Styling */
+        footer {
+            width: 100%;
+            background: linear-gradient(135deg, #444, #222);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            /* Keeps the footer at the bottom of the viewport */
+            bottom: 0;
+            left: 0;
+            font-family: 'Arial', sans-serif;
+            z-index: 1000;
+            /* Ensure it’s on top of other content */
+            box-sizing: border-box;
+            /* Includes padding and border in the element’s total width and height */
+        }
+
+        /* Footer Content Styling */
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            /* Center content horizontally */
+            padding: 0 20px;
+        }
+
+        /* Footer Heading Styling */
+        .footer-content h1 {
+            margin: 0;
+            font-size: 2rem;
+            /* Responsive font size */
+            font-weight: 600;
+            /* Semi-bold for emphasis */
+            animation: fadeIn 1.5s ease-in-out;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+            /* Subtle shadow for better readability */
+        }
+
+        /* Footer Paragraph Styling */
+        .footer-content p {
+            margin: 10px 0 0;
+            font-size: 1rem;
+            /* Responsive font size */
+            animation: fadeIn 2s ease-in-out;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            /* Subtle shadow for better readability */
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Main Content Padding to Prevent Overlapping */
+        body {
+            margin: 0;
+            padding-bottom: 80px;
+            /* Adjust this value based on footer height */
+            box-sizing: border-box;
+        }
+
+        /* Responsive Design Adjustments */
+        @media (max-width: 768px) {
+            footer {
+                padding: 15px;
+            }
+
+            .footer-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .footer-content p {
+                font-size: 0.875rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-content h1 {
+                font-size: 1.25rem;
+                /* Adjust font size for very small screens */
+            }
+
+            .footer-content p {
+                font-size: 0.75rem;
+                /* Adjust font size for very small screens */
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Wishing You a Birthday as Wonderful as You Are!</h1>
+        <p>May your special day overflow with happiness, laughter, and the warmth of those who cherish you.
+            Here's to a new chapter filled with unforgettable moments and endless joy!</p>
+    </header>
+
+    <div class="box">
+        <!-- Card 1 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तेरी हंसी की मिठास <br><span>मेरे दिल को सुकून देती है, जैसे ठंडी हवा की सुबह</span></h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/16.jpg" alt="Image 16">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तेरे बिना दिल अधूरा <br><span>जैसे रात बिना चाँद के, सूनी और वीरान</span></h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/7.jpg" alt="Image 7">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तेरी मुस्कान से <br><span>दिल की धड़कनें तेज हो जाती हैं, जैसे संगीत की सुर लहर में</span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/20.jpg" alt="Image 20">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तेरे बिना रातें <br><span>जैसे वीरान हो जाती हैं, चाँद के बिना रात की सन्नाटी</span></h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/3.jpg" alt="Image 3">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तेरे ख्यालों में <br><span>दिन कट जाता है, जैसे स्वप्नों की नगरी में खोया हुआ</span></h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/18.jpg" alt="Image 18">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तेरे साथ बिताए <br><span>हर लम्हे की यादें, अनमोल हैं जैसे मोती</span></h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/12.jpg" alt="Image 12">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तू है मेरे सपनों की <br><span>रानी, हर ख्वाब की हकीकत</span></h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/5.jpg" alt="Image 5">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तेरी आँखों में <br><span>खो जाने की ख्वाहिश, जैसे समुद्र की गहराई में</span></h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/13.jpg" alt="Image 13">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तेरे साथ बिताए <br><span>हर पल की यादें, दिल की धड़कन बन गई हैं</span></h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/9.jpg" alt="Image 9">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तेरी मुस्कान <br><span>मेरे दिल को छू जाती है, जैसे हर्ष की पहली किरण</span></h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/8.jpg" alt="Image 8">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 11 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तेरी बातें <br><span>दिल को राहत देती हैं, जैसे बहारों की पहली बूँद</span></h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/21.jpg" alt="Image 21">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 12 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तेरे बिना ये दुनिया <br><span>जैसे उजड़ी सी लगती है, सूनी और निराकार</span></h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/4.jpg" alt="Image 4">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 13 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तेरी हंसी में <br><span>जीवन की मिठास छुपी है, जैसे अमृत की बूँदें</span></h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/11.jpg" alt="Image 11">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 14 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तेरे साथ बिताया <br><span>हर लम्हा खास है, जैसे स्वप्न साकार हो गए हों</span></h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/14.jpg" alt="Image 14">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 15 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तेरे बिना हर <br><span>रास्ता सुनसान लगता है, जैसे निर्जन रेगिस्तान</span></h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/17.jpg" alt="Image 17">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 16 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तू है मेरी <br><span>जिंदगी का सबसे हसीं ख्वाब, जैसे सुबह की पहली किरण</span></h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/15.jpg" alt="Image 15">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 17 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तू है मेरी <br><span>जिंदगी का सबसे अनमोल खजाना, जैसे नगीने से भरा बक्सा</span></h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/6.jpg" alt="Image 6">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 18 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तेरे बिना <br><span>हर पल अधूरा सा लगता है, जैसे किताब का आखिरी पन्ना हो</span></h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/10.jpg" alt="Image 10">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 19 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तेरे साथ जीने <br><span>की ख्वाहिश, मेरे दिल की धड़कन है, जैसे अधूरी ख्वाइश</span></h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/2.jpg" alt="Image 2">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 20 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तेरे बिना <br><span>सब कुछ सूना लगता है, जैसे बिना सुर के गीत</span></h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/1.jpg" alt="Image 1">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 21 -->
+        <div class="card" onclick="openModal(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="details">
+                        <h2>तेरे बिना ये जहां <br><span>खाली सा लगता है, जैसे जीवन का रंग फीका हो गया हो</span></h2>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Riyapicks/19.jpg" alt="Image 19">
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="modalImg">
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <h1><b>💗</b></h1>
+            </div>
+        </footer>
+
+
+        <script>
+            function openModal(card) {
+                var modal = document.getElementById("myModal");
+                var modalImg = document.getElementById("modalImg");
+                var img = card.querySelector('.card-back img');
+                modal.style.display = "flex";
+                modalImg.src = img.src;
+            }
+
+            function closeModal() {
+                var modal = document.getElementById("myModal");
+                modal.style.display = "none";
+            }
+        </script>
+</body>
+
+</html>

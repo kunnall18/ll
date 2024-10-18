@@ -1,0 +1,183 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 100%);
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+    text-align: center;
+    perspective: 1000px;
+}
+
+@keyframes gradient-animation {
+    0% { background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 100%); }
+    50% { background: linear-gradient(45deg, #a1c4fd 0%, #c2e9fb 100%); }
+    100% { background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 100%); }
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 100%);
+    animation: gradient-animation 10s ease infinite;
+    z-index: -1;
+}
+
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    overflow: hidden;
+    background-color: transparent;
+    pointer-events: none;
+}
+
+.light {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    filter: blur(50px);
+    animation: light-move 15s ease-in-out infinite;
+}
+
+@keyframes light-move {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate(100vw, 100vh) rotate(180deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('sparkle.png'); /* Use a small, subtle sparkle image */
+    background-size: contain;
+    pointer-events: none;
+    animation: sparkle-move 20s linear infinite;
+}
+
+@keyframes sparkle-move {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100vw 100vh;
+    }
+}
+
+section {
+    position: relative;
+    z-index: 2;
+    height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.heading-link {
+    position: relative;
+    font-family: 'Courgette', cursive;
+    font-size: 4em;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+    animation: glow 1.5s infinite alternate, rotateText 5s infinite linear;
+    z-index: 10;
+    margin-bottom: 20px; /* Add space below the heading */
+}
+
+@keyframes rotateText {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.heading-link:hover {
+    text-shadow: 0 0 30px rgba(255, 255, 255, 1);
+}
+
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    max-height: 70vh; /* Adjust based on your preference */
+    overflow-y: auto;
+    position: relative;
+    z-index: 2;
+    padding: 20px; /* Add padding around the images */
+}
+
+.animated-img {
+    width: 150px; /* Keep the original size */
+    height: 150px; /* Keep the original size */
+    margin: 10px;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    animation: float 4s ease-in-out infinite, fadeIn 3s ease-in-out;
+}
+
+.animated-img:hover {
+    transform: scale(1.5) rotateY(360deg) rotateZ(15deg);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotateZ(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotateZ(-5deg);
+    }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    to {
+        text-shadow: 0 0 30px rgba(255, 255, 255, 1);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .animated-img {
+        width: 150px; /* Keep the original size */
+        height: 150px; /* Keep the original size */
+    }
+    
+    .heading-link {
+        font-size: 2.5em;
+    }
+}

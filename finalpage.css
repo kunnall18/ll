@@ -1,0 +1,252 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #020202, #333);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Source Code Pro', monospace;
+  position: relative;
+}
+
+canvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+h1.birthday-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-family: 'Dancing Script', cursive;
+  font-size: 3em;
+  font-weight: 700;
+  text-align: center;
+  animation: colour-change 5s infinite;
+  z-index: 1;
+}
+
+@keyframes colour-change {
+  0% { color: red; }
+  20% { color: orange; }
+  40% { color: yellow; }
+  60% { color: green; }
+  80% { color: blue; }
+  100% { color: purple; }
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.card {
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.5s, box-shadow 0.5s;
+  animation: float 3s ease-in-out infinite;
+  position: relative;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.romantic-line {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.2em;
+  text-align: center;
+  display: none;
+}
+
+.card:hover .romantic-line {
+  display: block;
+}
+
+img.sticker {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  animation: bounce 2s infinite;
+  z-index: 1;
+  cursor: pointer;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.footer {
+  position: absolute;
+  bottom: 2%;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5em;
+  z-index: 1;
+}
+
+/* Responsive Styles for Viewports Less Than 680px */
+@media (max-width: 680px) {
+  h1.birthday-text {
+    font-size: 2em;
+    top: 20%;
+  }
+
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    bottom: 25%;
+  }
+
+  .card {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+  }
+
+  .romantic-line {
+    font-size: 1em;
+  }
+
+  img.sticker {
+    width: 80px;
+    height: 80px;
+    bottom: 15%;
+  }
+
+  .footer {
+    font-size: 1.2em;
+    bottom: 10%;
+  }
+}
+
+/* General Responsive Styles for Other Viewports */
+@media (max-width: 1200px) {
+  h1.birthday-text {
+    font-size: 2.5em;
+  }
+
+  .card {
+    width: 180px;
+    height: 180px;
+    margin: 15px;
+  }
+
+  .romantic-line {
+    font-size: 1em;
+  }
+
+  img.sticker {
+    width: 80px;
+    height: 80px;
+  }
+
+  .footer {
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 768px) {
+  h1.birthday-text {
+    font-size: 2em;
+  }
+
+  .card {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+  }
+
+  .romantic-line {
+    font-size: 0.9em;
+  }
+
+  img.sticker {
+    width: 60px;
+    height: 60px;
+  }
+
+  .footer {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  h1.birthday-text {
+    font-size: 1.5em;
+  }
+
+  .card {
+    width: 120px;
+    height: 120px;
+    margin: 5px;
+  }
+
+  .romantic-line {
+    font-size: 0.8em;
+  }
+
+  img.sticker {
+    width: 50px;
+    height: 50px;
+  }
+
+  .footer {
+    font-size: 0.8em;
+  }
+}
+/* Confetti Canvas */
+#confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
